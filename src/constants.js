@@ -1,0 +1,11 @@
+export const width = 800; // The width of the renderer's viewport
+export const height = 600; // The height of the renderer's viewport
+export const tick = 10; // The duration of a tick in milliseconds
+export const acceleration = 10; // The acceleration constant used by the vehicle when accelerating
+export const reverse = 5; // The reverse constant used by the vehicle when reversing
+export const friction = 0.98; // The friction constant that slows down the vehicle
+export const maxHealth = 100; // The maximal health of a vehicle
+export const steeringRadius = 100; // The steering radius constant used when turning left or right
+export const rocketTTL = 2000; // The time to live of a rocket
+export const rocketIncrement = 600 // The speed increment that applies to rockets
+export const collisionRadius = 5 // The radius of in which the vehicle will be damaged by a collision
