@@ -21,8 +21,16 @@ class Game extends Map {
   }
 
   /**
-   * Return the spaceships.
+   * Returns the current timestamp.
    */
+  timestamp() {
+    return new Date().getTime();
+  }
+
+  /**
+   * Return the vehicles.
+   */
+  // TODO: Create the vehicles() method (generator)
   * vehicles() {
     for (const e of this.values()) {
       if (e instanceof Vehicle) {
@@ -34,6 +42,7 @@ class Game extends Map {
   /**
    * Return the rockets.
    */
+  // TODO: Create the rockets() method (generator)
   * rockets() {
     for (const e of this.values()) {
       if (e instanceof Rocket) {
@@ -45,15 +54,9 @@ class Game extends Map {
   /**
    * Generate a unique identifier for storing and synchronizing objects.
    */
+  // TODO: Create the id() method
   id() {
     return this.counter++;
-  }
-
-  /**
-   * Returns the current timestamp.
-   */
-  timestamp() {
-    return new Date().getTime();
   }
 
   /**
@@ -61,6 +64,7 @@ class Game extends Map {
    *
    * @returns {*}
    */
+  // TODO: Create the join() method
   join() {
     const vehicle = new Vehicle(this.id(), this.timestamp(), width / 2, height / 2, 0, -Math.PI / 2, false, false, false, false, '#000');
     this.set(vehicle.id, vehicle);
@@ -72,33 +76,35 @@ class Game extends Map {
    *
    * @param id
    */
+  // TODO: Create the quit(id) method
   quit(id) {
     this.delete(id);
   }
 
   /**
-   * Handle player events.
+   * Handle the player messages.
    *
    * @param player
-   * @param event
+   * @param message
    */
-  onMessage(id, event) {
+  // TODO: Create the onMessage(id, message) method
+  onMessage(id, message) {
     const vehicle = this.get(id);
-    switch (event.object) {
+    switch (message.object) {
       case 'ArrowLeft':
-        vehicle.isTurningLeft = event.action === 'keydown';
+        vehicle.isTurningLeft = message.action === 'keydown';
         break;
       case 'ArrowRight':
-        vehicle.isTurningRight = event.action === 'keydown';
+        vehicle.isTurningRight = message.action === 'keydown';
         break;
       case 'ArrowUp':
-        vehicle.isAccelerating = event.action === 'keydown';
+        vehicle.isAccelerating = message.action === 'keydown';
         break;
       case 'ArrowDown':
-        vehicle.isReversing = event.action === 'keydown';
+        vehicle.isReversing = message.action === 'keydown';
         break;
       case ' ':
-        if (event.action === 'keydown') {
+        if (message.action === 'keydown') {
           const rocket = new Rocket(
             this.id(),
             this.timestamp(),
@@ -122,6 +128,8 @@ class Game extends Map {
     for (const entity of this.values()) {
       entity.move();
     }
+
+    // TODO: Check for collisions and remove old rockets
     for (const rocket of this.rockets()) {
       if (rocket.t - rocket.created > rocketTTL) {
         this.delete(rocket.id);

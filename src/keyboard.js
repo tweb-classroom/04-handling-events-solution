@@ -5,6 +5,7 @@ import Message from './message.js';
  * @param listener
  */
 function keyboard(listener) {
+  // TODO: implement a function that filters keyboard events and pass them to the listener
   const keys = new Set([' ', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']);
   const downKeys = new Set();
   window.addEventListener('keydown', (event) => {
