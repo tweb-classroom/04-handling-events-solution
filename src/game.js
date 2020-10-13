@@ -61,7 +61,7 @@ class Game extends Map {
   }
 
   /**
-   * Initialize a vehicle its id.
+   * Initialize a vehicle and set a new key-value element in the class map.
    *
    * @returns {*}
    */
