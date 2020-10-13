@@ -27,14 +27,14 @@ describe('util.js', () => {
       assert.throws(() => util.random('1', 2), Error, 'Invalid arguments');
       assert.throws(() => util.random(1, '2'), Error, 'Invalid arguments');
       assert.throws(
-          () => util.random(undefined, 2),
-          Error,
-          'Invalid arguments',
+        () => util.random(undefined, 2),
+        Error,
+        'Invalid arguments',
       );
       assert.throws(
-          () => util.random(1, undefined),
-          Error,
-          'Invalid arguments',
+        () => util.random(1, undefined),
+        Error,
+        'Invalid arguments',
       );
     });
   });
@@ -70,8 +70,8 @@ describe('util.js', () => {
       const radians = conversions[v][1];
       it(`toRadians(${degrees}) should be equal to ${radians}`, () => {
         assert.equal(
-            util.toRadians(degrees),
-            eval(radians.replace('π', 'Math.PI')),
+          util.toRadians(degrees),
+          eval(radians.replace('π', 'Math.PI')),
         );
       });
     }
@@ -86,8 +86,8 @@ describe('util.js', () => {
       const radians = conversions[v][1];
       it(`toDegrees(${radians}) should be equal to ${degrees}`, () => {
         assert.equal(
-            util.toDegrees(eval(radians.replace('π', 'Math.PI'))),
-            degrees,
+          util.toDegrees(eval(radians.replace('π', 'Math.PI'))),
+          degrees,
         );
       });
     }
@@ -118,14 +118,14 @@ describe('util.js', () => {
       assert.throws(() => util.adjacent(5, '0'), Error, 'Invalid arguments');
       assert.throws(() => util.adjacent('5', 0), Error, 'Invalid arguments');
       assert.throws(
-          () => util.adjacent(5, undefined),
-          Error,
-          'Invalid arguments',
+        () => util.adjacent(5, undefined),
+        Error,
+        'Invalid arguments',
       );
       assert.throws(
-          () => util.adjacent(undefined, 0),
-          Error,
-          'Invalid arguments',
+        () => util.adjacent(undefined, 0),
+        Error,
+        'Invalid arguments',
       );
     });
   });
@@ -151,14 +151,14 @@ describe('util.js', () => {
       assert.throws(() => util.opposite(5, '0'), Error, 'Invalid arguments');
       assert.throws(() => util.opposite('5', 0), Error, 'Invalid arguments');
       assert.throws(
-          () => util.opposite(5, undefined),
-          Error,
-          'Invalid arguments',
+        () => util.opposite(5, undefined),
+        Error,
+        'Invalid arguments',
       );
       assert.throws(
-          () => util.opposite(undefined, 0),
-          Error,
-          'Invalid arguments',
+        () => util.opposite(undefined, 0),
+        Error,
+        'Invalid arguments',
       );
     });
   });

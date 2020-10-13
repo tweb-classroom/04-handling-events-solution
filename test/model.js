@@ -10,7 +10,7 @@ describe('model.js', () => {
     it('The MovingEntity constructor should create a new object', () => {
       const e = new model.MovingEntity(1, 100, 100, 100, 100, Math.PI);
       assert.equal(e.id, 1);
-      assert.equal(e.t, 100);
+      assert.equal(e.timestamp, 100);
       assert.equal(e.x, 100);
       assert.equal(e.y, 100);
       assert.equal(e.speed, 100);
@@ -22,7 +22,7 @@ describe('model.js', () => {
     });
     it('The render(context) method should raise an "Not implemented" error', () => {
       const e = new model.MovingEntity(1, 100, 100, 100, 100, Math.PI);
-      assert.throws(() => e.move(), Error, 'Not implemented');
+      assert.throws(() => e.render(), Error, 'Not implemented');
     });
   });
 
@@ -33,7 +33,7 @@ describe('model.js', () => {
     it('The Rocket constructor should create a new object', () => {
       const e = new model.Rocket(1, 100, 100, 100, 100, Math.PI);
       assert.equal(e.id, 1);
-      assert.equal(e.t, 100);
+      assert.equal(e.timestamp, 100);
       assert.equal(e.x, 100);
       assert.equal(e.y, 100);
       assert.equal(e.speed, 100);
@@ -43,7 +43,7 @@ describe('model.js', () => {
       const e = new model.Rocket(1, 100, 100, 100, 100, 0);
       e.move();
       assert.equal(e.id, 1);
-      assert.equal(e.t, 110);
+      assert.equal(e.timestamp, 110);
       assert.equal(e.x, 101);
       assert.equal(e.y, 100);
       assert.equal(e.angle, 0);
@@ -53,7 +53,7 @@ describe('model.js', () => {
       const e = new model.Rocket(1, 100, 100, 100, 100, Math.PI);
       e.move();
       assert.equal(e.id, 1);
-      assert.equal(e.t, 110);
+      assert.equal(e.timestamp, 110);
       assert.equal(e.x, 99);
       assert.equal(e.y, 100);
       assert.equal(e.angle, Math.PI);
@@ -63,7 +63,7 @@ describe('model.js', () => {
       const e = new model.Rocket(1, 100, 100, 100, 100, Math.PI / 2);
       e.move();
       assert.equal(e.id, 1);
-      assert.equal(e.t, 110);
+      assert.equal(e.timestamp, 110);
       assert.equal(e.x, 100);
       assert.equal(e.y, 101);
       assert.equal(e.angle, Math.PI / 2);
@@ -73,7 +73,7 @@ describe('model.js', () => {
       const e = new model.Rocket(1, 100, 100, 100, 100, Math.PI / 4);
       e.move();
       assert.equal(e.id, 1);
-      assert.equal(e.t, 110);
+      assert.equal(e.timestamp, 110);
       assert.closeTo(e.x, 100.7071, 0.0001);
       assert.closeTo(e.y, 100.7071, 0.0001);
       assert.equal(e.angle, Math.PI / 4);
@@ -83,7 +83,7 @@ describe('model.js', () => {
       const e = new model.Rocket(1, 100, 100, 100, 100, (3 * Math.PI) / 2);
       e.move();
       assert.equal(e.id, 1);
-      assert.equal(e.t, 110);
+      assert.equal(e.timestamp, 110);
       assert.equal(e.x, 100);
       assert.equal(e.y, 99);
       assert.equal(e.angle, (3 * Math.PI) / 2);
@@ -98,7 +98,7 @@ describe('model.js', () => {
     it('The Vehicle constructor should create a new object', () => {
       const e = new model.Vehicle(1, 100, 100, 100, 100, Math.PI);
       assert.equal(e.id, 1);
-      assert.equal(e.t, 100);
+      assert.equal(e.timestamp, 100);
       assert.equal(e.x, 100);
       assert.equal(e.y, 100);
       assert.equal(e.speed, 100);

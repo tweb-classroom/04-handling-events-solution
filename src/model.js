@@ -7,6 +7,8 @@ import {
   height,
   width,
   maxHealth,
+  vehicleWidth,
+  vehicleHeight,
 } from './constants.js';
 import { adjacent, position, opposite } from './util.js';
 
@@ -17,15 +19,15 @@ class MovingEntity {
   /**
    * Construct a MovingObject.
    * @param {*} id The identifier.
-   * @param {*} t The time t in milliseconds.
+   * @param {*} timestamp The initialization timestamp in milliseconds.
    * @param {*} x The x coordinate.
    * @param {*} y The y coordinate.
    * @param {*} speed The speed expressed in pixels/second.
    * @param {*} angle The angle expressed in radians.
    */
-  constructor(id, t, x, y, speed, angle) {
+  constructor(id, timestamp, x, y, speed, angle) {
     this.id = id;
-    this.t = t;
+    this.timestamp = timestamp;
     this.x = x;
     this.y = y;
     this.angle = angle;
@@ -55,15 +57,15 @@ class Rocket extends MovingEntity {
   /**
    * Construct a Rocket.
    * @param {*} id The identifier.
-   * @param {*} t The time t.
+   * @param {*} timestamp The initialization timestamp.
    * @param {*} x The x coordinate.
    * @param {*} y The y coordinate.
    * @param {*} speed The speed expressed in pixels/second.
    * @param {*} angle The angle expressed in radians.
    */
-  constructor(id, t, x, y, speed, angle) {
-    super(id, t, x, y, speed, angle);
-    this.created = t;
+  constructor(id, timestamp, x, y, speed, angle) {
+    super(id, timestamp, x, y, speed, angle);
+    this.created = timestamp;
   }
 
   /**
@@ -71,7 +73,7 @@ class Rocket extends MovingEntity {
    */
   move() {
     // Update the time
-    this.t += tick;
+    this.timestamp += tick;
 
     // Compute the x and y distances
     const distance = (this.speed / 1000) * tick;
@@ -102,16 +104,16 @@ class Vehicle extends MovingEntity {
   /**
    * Construct a Vehicle.
    * @param {*} id The identifier.
-   * @param {*} t The time t.
+   * @param {*} timestamp The initialization timestamp.
    * @param {*} x The x coordinate.
    * @param {*} y The y coordinate.
    * @param {*} speed The speed expressed in pixels/second.
    * @param {*} angle The angle expressed in radians.
    * @param {*} color The color expressed in RGB hex code.
    */
-  constructor(id, t, x, y, speed, angle,
+  constructor(id, timestamp, x, y, speed, angle,
     isAccelerating, isReversing, isTurningLeft, isTurningRight, color) {
-    super(id, t, x, y, speed, angle);
+    super(id, timestamp, x, y, speed, angle);
     this.isAccelerating = isAccelerating;
     this.isReversing = isReversing;
     this.isTurningLeft = isTurningLeft;
@@ -125,7 +127,7 @@ class Vehicle extends MovingEntity {
    */
   move() {
     // Update the time
-    this.t += tick;
+    this.timestamp += tick;
 
     // Compute the speed
     this.speed *= friction;
@@ -152,11 +154,11 @@ class Vehicle extends MovingEntity {
    */
   render(context) {
     context.beginPath();
-    context.lineTo(+6, -3);
-    context.lineTo(-6, -3);
-    context.lineTo(-6, +3);
-    context.lineTo(+6, +3);
-    context.lineTo(+6, -3);
+    context.lineTo(vehicleWidth, -vehicleHeight);
+    context.lineTo(-vehicleWidth, -vehicleHeight);
+    context.lineTo(-vehicleWidth, vehicleHeight);
+    context.lineTo(vehicleWidth, vehicleHeight);
+    context.lineTo(vehicleWidth, -vehicleHeight);
     context.strokeStyle = this.color;
     context.stroke();
   }

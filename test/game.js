@@ -5,6 +5,7 @@ import {
   rocketIncrement,
   rocketTTL,
   tick,
+  keysValues,
 } from '../src/constants.js';
 
 import Game from '../src/game.js';
@@ -66,43 +67,43 @@ describe('game.js', () => {
       game.quit(id2);
       assert.equal(game.size, 0);
     });
-    it('onMessage(id, new Message("keydown", " ")) should create a rocket for the given vehicle and add it to the game', () => {
+    it(`onMessage(id, new Message("keydown", "${keysValues.space}")) should create a rocket for the given vehicle and add it to the game`, () => {
       const game = new Game();
       const id = game.join();
       const vehicle = game.get(id);
       assert.equal(game.size, 1);
-      game.onMessage(id, new Message('keydown', ' '));
+      game.onMessage(id, new Message('keydown', keysValues.space));
       const rocket1 = game.get(1);
       assert.equal(game.size, 2);
       assert.isTrue(game.get(1) instanceof Rocket);
       assert.equal(rocket1.angle, vehicle.angle);
       assert.equal(rocket1.speed, vehicle.speed + rocketIncrement);
     });
-    it('onMessage(id, new Message("keydown", "ArrowLeft")) should rotate the vehicle on the left', () => {
+    it(`onMessage(id, new Message("keydown", "${keysValues.arrowLeft}")) should rotate the vehicle on the left`, () => {
       const game = new Game();
       const id = game.join();
-      game.onMessage(id, new Message('keydown', 'ArrowLeft'));
+      game.onMessage(id, new Message('keydown', keysValues.arrowLeft));
       const vehicle = game.get(id);
       assert.isTrue(vehicle.isTurningLeft);
     });
-    it('onMessage(id, new Message("keydown", "ArrowRight")) should rotate the vehicle on the left', () => {
+    it(`onMessage(id, new Message("keydown", "${keysValues.arrowRight}")) should rotate the vehicle on the right`, () => {
       const game = new Game();
       const id = game.join();
-      game.onMessage(id, new Message('keydown', 'ArrowRight'));
+      game.onMessage(id, new Message('keydown', keysValues.arrowRight));
       const vehicle = game.get(id);
       assert.isTrue(vehicle.isTurningRight);
     });
-    it('onMessage(id, new Message("keydown", "ArrowUp")) should accelerate the vehicle', () => {
+    it(`onMessage(id, new Message("keydown", "${keysValues.arrowUp}")) should accelerate the vehicle`, () => {
       const game = new Game();
       const id = game.join();
-      game.onMessage(id, new Message('keydown', 'ArrowUp'));
+      game.onMessage(id, new Message('keydown', keysValues.arrowUp));
       const vehicle = game.get(id);
       assert.isTrue(vehicle.isAccelerating);
     });
-    it('onMessage(id, new Message("keydown", "ArrowDown")) should reverse the vehicle', () => {
+    it(`onMessage(id, new Message("keydown", "${keysValues.arrowDown}")) should reverse the vehicle`, () => {
       const game = new Game();
       const id = game.join();
-      game.onMessage(id, new Message('keydown', 'ArrowDown'));
+      game.onMessage(id, new Message('keydown', keysValues.arrowDown));
       const vehicle = game.get(id);
       assert.isTrue(vehicle.isReversing);
     });

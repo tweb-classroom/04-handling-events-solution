@@ -1,4 +1,5 @@
 import Message from './message.js';
+import { keysValues } from './constants.js';
 
 /**
  * A function that listen to keyboard events.
@@ -6,11 +7,17 @@ import Message from './message.js';
  */
 function keyboard(listener) {
   // TODO: implement a function that filters keyboard events and pass them to the listener
-  const keys = new Set([' ', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']);
+  const listenedKeysList = new Set([
+    keysValues.arrowLeft,
+    keysValues.arrowRight,
+    keysValues.arrowUp,
+    keysValues.arrowDown,
+    keysValues.space,
+  ]);
   const downKeys = new Set();
   window.addEventListener('keydown', (event) => {
     const { key } = event;
-    if (keys.has(key)) {
+    if (listenedKeysList.has(key)) {
       event.preventDefault();
       if (!downKeys.has(key)) {
         downKeys.add(key);

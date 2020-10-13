@@ -4,6 +4,7 @@ import {
   rocketTTL,
   rocketIncrement,
   collisionRadius,
+  keysValues,
 } from './constants.js';
 import { Vehicle, Rocket } from './model.js';
 import { collision } from './util.js';
@@ -91,19 +92,19 @@ class Game extends Map {
   onMessage(id, message) {
     const vehicle = this.get(id);
     switch (message.object) {
-      case 'ArrowLeft':
+      case keysValues.arrowLeft:
         vehicle.isTurningLeft = message.action === 'keydown';
         break;
-      case 'ArrowRight':
+      case keysValues.arrowRight:
         vehicle.isTurningRight = message.action === 'keydown';
         break;
-      case 'ArrowUp':
+      case keysValues.arrowUp:
         vehicle.isAccelerating = message.action === 'keydown';
         break;
-      case 'ArrowDown':
+      case keysValues.arrowDown:
         vehicle.isReversing = message.action === 'keydown';
         break;
-      case ' ':
+      case keysValues.space:
         if (message.action === 'keydown') {
           const rocket = new Rocket(
             this.id(),
@@ -131,7 +132,7 @@ class Game extends Map {
 
     // TODO: Check for collisions and remove old rockets
     for (const rocket of this.rockets()) {
-      if (rocket.t - rocket.created > rocketTTL) {
+      if (rocket.timestamp - rocket.created > rocketTTL) {
         this.delete(rocket.id);
       } else {
         for (const vehicle of this.vehicles()) {
