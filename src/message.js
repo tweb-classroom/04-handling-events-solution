@@ -1,7 +1,7 @@
 class Message {
-  constructor(action, object) {
+  constructor(action, value) {
     this.action = action;
-    this.object = object;
+    this.object = value;
   }
 }
 
