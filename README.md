@@ -1,7 +1,7 @@
 # Exercise 4
 
 You are asked to improve the `Game` class and to implement and test the `keyboard(listener)` function. 
-Notice, that some design decisions, such as the introduction of a `Message` class, depend on the multiplayer features that will be implemented in the future assignments.
+Notice that some design decisions, such as the introduction of a `Message` class, depend on the multiplayer features that will be implemented in the future assignments.
 
 ![Model](./model.png)
 
