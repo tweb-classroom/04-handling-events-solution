@@ -32,4 +32,4 @@ You are asked to implement the `keyboard(listener)` function and to provide a un
 
 All your modifications should take place in the files `src/game.js`, `src/keyboard.js`, and `test/keyboard.js` files, which contain TODO placeholders. 
 For the corrections, we will check that your project passes the provided tests.
-Additionally, we will read the tests you created and visually verify in the browser that the game behaves as in the demonstration video.
+Additionally, we will read the tests you created and visually verify in the browser that the game behaves as in the [demonstration video](./demo.mov).
