@@ -7,5 +7,5 @@ export const friction = 0.98; // The friction constant that slows down the vehic
 export const maxHealth = 100; // The maximal health of a vehicle
 export const steeringRadius = 100; // The steering radius constant used when turning left or right
 export const rocketTTL = 2000; // The time to live of a rocket
-export const rocketIncrement = 600 // The speed increment that applies to rockets
-export const collisionRadius = 5 // The radius of in which the vehicle will be damaged by a collision
+export const rocketIncrement = 600; // The speed increment that applies to rockets
+export const collisionRadius = 5; // The radius of a vehicle when checking for by a collision

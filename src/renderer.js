@@ -1,6 +1,4 @@
 import { width, height, steeringRadius } from './constants.js';
-import { Vehicle, Rocket } from './model.js';
-
 
 /**
  * A class that renders the state of the game.
@@ -26,11 +24,11 @@ class Renderer {
     this.context.clearRect(0, 0, width, height);
 
     // Draw the entities
-    for (let entity of this.game.values()) {
+    for (const entity of this.game.values()) {
       this.context.save();
       this.context.translate(entity.x, entity.y);
       this.context.rotate(entity.angle);
-      entity.render(this.context)
+      entity.render(this.context);
 
       // TODO:
       // Use the save, translate, rotate and restore methods of the context
@@ -44,10 +42,10 @@ class Renderer {
   renderDebug(entity) {
     this.context.fillStyle = 'rgba(0, 0, 0, 0.25)';
     this.context.strokeStyle = 'rgba(0, 0, 0, 0.25)';
-    let i = 12;
-    let x = - 20;
-    let y = + 20;
-    for (let k of Object.keys(entity)) {
+    const i = 12;
+    const x = -20;
+    let y = +20;
+    for (const k of Object.keys(entity)) {
       const v = entity[k];
       if (typeof v === 'number') {
         this.context.fillText(`${k}: ${v.toFixed(0)}`, x, y += i);
@@ -55,8 +53,8 @@ class Renderer {
     }
     if (!(entity.isTurningLeft ^ entity.isTurningRight)) {
       this.context.beginPath();
-      this.context.moveTo( - 80, 0);
-      this.context.lineTo( + 80, 0);
+      this.context.moveTo(-80, 0);
+      this.context.lineTo(+80, 0);
       this.context.stroke();
     }
     if (entity.isTurningLeft) {
@@ -72,7 +70,6 @@ class Renderer {
       this.context.stroke();
     }
   }
-
 }
 
 export default Renderer;
