@@ -46,7 +46,7 @@ describe('game.js', () => {
       assert.equal(game.size, 0);
       const id = game.join();
       const vehicle = game.get(id);
-      assert.isTrue(game.get(0) instanceof Vehicle);
+      assert.isTrue(vehicle instanceof Vehicle);
       assert.equal(game.size, 1);
       assert.equal(vehicle.id, 0);
       assert.equal(vehicle.x, width / 2);
