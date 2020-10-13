@@ -91,22 +91,22 @@ class Game extends Map {
   // TODO: Create the onMessage(id, message) method
   onMessage(id, message) {
     const vehicle = this.get(id);
-    const isKeyDownPressed = message.action === 'keydown';
+    const isKeydownEvent = message.action === 'keydown';
     switch (message.object) {
       case keysValues.arrowLeft:
-        vehicle.isTurningLeft = isKeyDownPressed;
+        vehicle.isTurningLeft = isKeydownEvent;
         break;
       case keysValues.arrowRight:
-        vehicle.isTurningRight = isKeyDownPressed;
+        vehicle.isTurningRight = isKeydownEvent;
         break;
       case keysValues.arrowUp:
-        vehicle.isAccelerating = isKeyDownPressed;
+        vehicle.isAccelerating = isKeydownEvent;
         break;
       case keysValues.arrowDown:
-        vehicle.isReversing = isKeyDownPressed;
+        vehicle.isReversing = isKeydownEvent;
         break;
       case keysValues.space:
-        if (isKeyDownPressed) {
+        if (isKeydownEvent) {
           const rocket = new Rocket(
             this.id(),
             this.timestamp(),
