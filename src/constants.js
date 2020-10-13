@@ -15,7 +15,7 @@ export const collisionRadius = 5; // The radius of a vehicle when checking for b
 export const vehicleWidth = 6; // The width of the vehicle's rectangle
 export const vehicleHeight = 3; // The height of the vehicle's rectangle
 
-// Contain the values of the possibly pressed keys in the app
+// Contains the values of the possibly pressed keys in the app
 export const keysValues = {
   arrowLeft: 'ArrowLeft',
   arrowRight: 'ArrowRight',
@@ -31,7 +31,7 @@ export const debugInformationLineHeight = 12;
 // The width of the debug line that indicates the way of the vehicle
 export const debugLineWidth = 80;
 
-// Contain some used styles
+// Contains some used CSS styles
 export const style = {
   stroke: 'rgb(0, 0, 0)',
   font: '11px Arial',
